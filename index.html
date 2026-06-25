@@ -193,7 +193,7 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const today=()=>new Date().toISOString().slice(0,10);
 const DB={get:k=>JSON.parse(localStorage.getItem(k)||'[]'),set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 const SET={get:()=>JSON.parse(localStorage.getItem('settings')||'{}'),set:o=>localStorage.setItem('settings',JSON.stringify(o))};
-const goals=()=>{const s=SET.get();return{cal:s.cal||3000,pro:s.pro||150,w:s.w||null};};
+const goals=()=>{const s=SET.get();return{cal:s.cal||3000,pro:s.pro||150,w:s.w||165};};
 const EXERCISES={
   Push:['Bench Press','Military Press','Incline DB Press','Lateral Raises','Pec Deck / Fly','Tricep Pushdown / Ext','Dips'],
   Pull:['Pull-ups','Bent-Over Rows','Seated Cable Rows','Lat Pulldowns','Face Pulls','Preacher Curls','Hammer Curls'],
