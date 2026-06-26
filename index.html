@@ -12,7 +12,7 @@
   :root{
     --bg:#08090c;--txt:#f3f4f6;--dim:#797f8c;--faint:#4a4f5a;
     --accent:#3ee07f;--accent2:#26b862;--red:#ff5d6c;--redbg:rgba(255,93,108,.13);--posbg:rgba(62,224,127,.13);
-    --card:rgba(255,255,255,.035);--card-bd:rgba(255,255,255,.08);--in:rgba(255,255,255,.05);--shadow:0 10px 30px rgba(0,0,0,.4);
+    --card:rgba(255,255,255,.035);--card-bd:rgba(255,255,255,.08);--in:rgba(255,255,255,.05);--shadow:0 10px 30px rgba(0,0,0,.4);--gold:#ffd24a;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;font-variant-numeric:tabular-nums}
   html,body{margin:0}
@@ -40,6 +40,7 @@
   .row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
   button{font-family:inherit;cursor:pointer;transition:transform .12s,filter .18s,background .18s}button:active{transform:scale(.97)}
   .btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04140a;border:0;border-radius:14px;padding:15px;font-size:15px;font-weight:800;width:100%;margin-top:16px;box-shadow:0 6px 20px rgba(62,224,127,.25);letter-spacing:.2px}
+  .btn.ghost{background:var(--in);color:var(--txt);border:1px solid var(--card-bd);box-shadow:none;margin-top:10px}
   .seg{display:flex;background:var(--in);border-radius:13px;padding:4px;gap:4px;border:1px solid var(--card-bd)}
   .seg button{flex:1;border:0;background:transparent;color:var(--dim);font-weight:700;padding:10px;font-size:13px;border-radius:9px;transition:.18s}
   .seg button.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04140a;box-shadow:0 4px 12px rgba(62,224,127,.25)}
@@ -51,35 +52,34 @@
   .del{color:var(--faint);background:none;border:0;font-size:11px;padding:6px 4px;font-weight:600}.del:active{color:var(--red)}
   .ex{background:var(--in);border:1px solid var(--card-bd);border-radius:14px;padding:13px;margin-bottom:10px}
   .ex .n{font-weight:700;font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-  .ex .last{font-size:10.5px;color:var(--accent);font-weight:600;white-space:nowrap}.ex .last.none{color:var(--faint)}
+  .ex .meta{font-size:10.5px;font-weight:600;white-space:nowrap;display:flex;gap:8px;align-items:center}
+  .ex .last{color:var(--accent)}.ex .last.none{color:var(--faint)}.ex .best{color:var(--gold)}
+  .ex .xrm{color:var(--faint);font-size:14px;background:none;border:0;padding:0 2px}
   .ex .row{margin-top:10px}.ex input{padding:11px;border-radius:11px}
   .chartwrap svg{width:100%;height:90px;display:block}
   .empty{color:var(--faint);text-align:center;padding:24px;font-size:13px}
   .hide{display:none}
-  /* progress bars */
   .pb{height:10px;background:var(--in);border-radius:7px;overflow:hidden;margin:7px 0 2px}.pb>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:7px;transition:width .3s}
   .pb.pro>i{background:linear-gradient(90deg,#6aa9ff,#3d7bff)}
   .ptxt{display:flex;justify-content:space-between;font-size:13px;font-weight:700}.ptxt .g{color:var(--dim);font-weight:600}
-  /* food quick chips */
   .qa{display:flex;flex-wrap:wrap;gap:8px}
   .qa button{flex:0 0 auto;background:var(--in);border:1px solid var(--card-bd);color:var(--txt);border-radius:11px;padding:9px 12px;font-size:12.5px;font-weight:600}
-  .qa button:active{background:var(--posbg);border-color:var(--accent)}
-  .qa button b{color:var(--accent);font-weight:700}
-  /* creatine toggle */
+  .qa button:active{background:var(--posbg);border-color:var(--accent)}.qa button b{color:var(--accent);font-weight:700}
   .crea{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .crea .lbl{font-size:15px;font-weight:700}.crea .sk{font-size:12px;color:var(--dim);margin-top:2px}
   .toggle{border:0;border-radius:14px;padding:13px 18px;font-size:14px;font-weight:800;background:var(--in);color:var(--dim);border:1px solid var(--card-bd);white-space:nowrap}
   .toggle.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04140a;border-color:transparent;box-shadow:0 4px 14px rgba(62,224,127,.3)}
-  /* calendar */
   .cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
   .cal-nav button{background:var(--in);border:1px solid var(--card-bd);color:var(--txt);width:32px;height:32px;border-radius:10px;font-size:15px}
   .cal-nav .m{font-weight:700;font-size:14px}
   .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
   .cal-h{text-align:center;font-size:9px;color:var(--faint);font-weight:700;padding:2px 0}
-  .cal-d{aspect-ratio:1;border-radius:9px;background:var(--in);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--dim);padding:2px}
+  .cal-d{aspect-ratio:1;border-radius:9px;background:var(--in);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--dim);padding:2px;position:relative}
   .cal-d .cd{font-size:10px}.cal-d .cp{font-size:9px;font-weight:800;margin-top:1px}
   .cal-d.pos{background:var(--posbg);color:var(--accent)}.cal-d.pos .cd{color:var(--accent)}
   .cal-d.neg{background:var(--redbg);color:var(--red)}.cal-d.neg .cd{color:var(--red)}
+  .cal-d.part{background:rgba(62,224,127,.06)}
+  .cal-d .cdot{position:absolute;top:3px;right:4px;width:5px;height:5px;border-radius:50%;background:#6aa9ff}
   .streak{font-size:11px;color:var(--accent);font-weight:700;text-transform:none;letter-spacing:0}
   .nav{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;gap:3px;background:rgba(18,20,25,.74);backdrop-filter:blur(24px);border:1px solid var(--card-bd);border-radius:22px;padding:6px;box-shadow:0 12px 36px rgba(0,0,0,.55);z-index:10}
   .nav button{border:0;background:transparent;color:var(--dim);padding:9px 13px;border-radius:16px;font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px;transition:.2s}
@@ -120,7 +120,7 @@
       <div><label>Date</label><input type="date" id="tDate"></div>
       <div><label>Result</label><div class="seg" id="resSeg"><button class="on" data-v="W">W</button><button data-v="L">L</button><button data-v="Skip">Skip</button></div></div>
     </div>
-    <label>P&L ($)</label><input type="number" id="tPnl" inputmode="decimal" placeholder="148">
+    <label>P&L ($) — just the number, W/L sets the sign</label><input type="number" id="tPnl" inputmode="decimal" placeholder="148">
     <label>Notes</label><textarea id="tNote" placeholder="levels, fill quality, RSI at entry…"></textarea>
     <button class="btn" onclick="addTrade()">Add trade</button>
   </div>
@@ -134,6 +134,7 @@
     <div class="seg" id="daySeg"><button class="on" data-v="Push">Push</button><button data-v="Pull">Pull</button><button data-v="Legs">Legs</button></div>
     <label style="margin-top:12px">Date</label><input type="date" id="gDate">
     <div id="exList" style="margin-top:14px"></div>
+    <button class="btn ghost" onclick="addExercise()">+ Add exercise</button>
     <button class="btn" onclick="saveWorkout()">Save workout</button>
   </div>
   <div class="card"><h2>Recent</h2><div id="woList"></div></div>
@@ -159,8 +160,12 @@
     <div class="row" style="margin-top:10px"><input id="fCal" type="number" inputmode="numeric" placeholder="cal"><input id="fPro" type="number" inputmode="numeric" placeholder="protein g"></div>
     <button class="btn" onclick="addCustom()">Add food</button>
   </div>
+  <div class="card">
+    <h2>Calendar <span class="streak" id="creaCalNote">💊 = creatine</span></h2>
+    <div class="cal-nav"><button onclick="foodCalShift(-1)">‹</button><span class="m" id="foodCalMonth"></span><button onclick="foodCalShift(1)">›</button></div>
+    <div class="cal" id="foodCalGrid"></div>
+  </div>
   <div class="card"><h2>Today's log</h2><div id="foodList"></div></div>
-  <div class="card"><h2>Past days</h2><div id="foodHist"></div></div>
 </div>
 
 <!-- BODY -->
@@ -190,7 +195,8 @@
 
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const today=()=>new Date().toISOString().slice(0,10);
+// LOCAL date (fixes creatine/day-boundary bugs that came from UTC)
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
 const DB={get:k=>JSON.parse(localStorage.getItem(k)||'[]'),set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 const SET={get:()=>JSON.parse(localStorage.getItem('settings')||'{}'),set:o=>localStorage.setItem('settings',JSON.stringify(o))};
 const goals=()=>{const s=SET.get();return{cal:s.cal||3000,pro:s.pro||150,w:s.w||165};};
@@ -198,25 +204,34 @@ const EXERCISES={
   Push:['Bench Press','Military Press','Incline DB Press','Lateral Raises','Pec Deck / Fly','Tricep Pushdown / Ext','Dips'],
   Pull:['Pull-ups','Bent-Over Rows','Seated Cable Rows','Lat Pulldowns','Face Pulls','Preacher Curls','Hammer Curls'],
   Legs:['Squats','Leg Press','Leg Extensions','RDLs','Hamstring Curls','Calf Raises']};
+const customEx=()=>JSON.parse(localStorage.getItem('customExercises')||'{}');
+const exFor=day=>[...EXERCISES[day],...((customEx()[day])||[])];
 const STAPLES=[['Whole milk (cup)',150,8],['Mass-gainer shake',900,30],['Eggs (2)',140,12],['Rice (cup)',205,4],['Oats (½c)',150,5],['Chicken (4oz)',180,35],['Beef (4oz)',290,19],['Greek yogurt',150,18],['Banana',105,1],['Olive oil (tbsp)',120,0],['Bread (2 slc)',160,6],['Cheese (oz)',110,7]];
 const RING_C=2*Math.PI*74;
-let calMonth=new Date();
+let calMonth=new Date(), foodCalMonth=new Date();
+// effective P&L — sign ALWAYS derived from result (fixes losses showing positive, even old entries)
+const effPnl=t=>t.res==='L'?-Math.abs(t.pnl):t.res==='Skip'?0:Math.abs(t.pnl);
 
 function seg(id,cb){$$('#'+id+' button').forEach(b=>b.onclick=()=>{$$('#'+id+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on');cb&&cb(b.dataset.v);});}
 const segVal=id=>$('#'+id+' button.on').dataset.v;
 const money=n=>(n<0?'-$':'$')+Math.abs(n).toLocaleString('en-US',{maximumFractionDigits:0});
+const kfmt=n=>n>=1000?(n/1000).toFixed(1)+'k':''+n;
 
 function go(t){['trade','gym','food','body'].forEach(x=>{$('#tab-'+x).classList.toggle('hide',x!==t);$('#nav-'+x).classList.toggle('on',x===t);});
   $('#ttl').textContent={trade:'Trading',gym:'Gym',food:'Food',body:'Body'}[t];
   if(t==='gym')renderEx();if(t==='food')renderFood();if(t==='body')renderBody();}
 
-// trading
-function addTrade(){const t={id:Date.now(),date:$('#tDate').value||today(),strat:segVal('stratSeg'),res:segVal('resSeg'),pnl:parseFloat($('#tPnl').value)||0,note:$('#tNote').value.trim()};const a=DB.get('trades');a.push(t);DB.set('trades',a);$('#tPnl').value='';$('#tNote').value='';renderTrades();}
+// ---------- trading ----------
+function addTrade(){const res=segVal('resSeg');const raw=Math.abs(parseFloat($('#tPnl').value)||0);
+  const pnl=res==='Skip'?0:res==='L'?-raw:raw;
+  const t={id:Date.now(),date:$('#tDate').value||today(),strat:segVal('stratSeg'),res,pnl,note:$('#tNote').value.trim()};
+  const a=DB.get('trades');a.push(t);DB.set('trades',a);$('#tPnl').value='';$('#tNote').value='';renderTrades();}
 function delTrade(id){DB.set('trades',DB.get('trades').filter(x=>x.id!==id));renderTrades();}
-function streakDays(){const a=DB.get('trades');const by={};a.forEach(t=>{if(t.res!=='Skip')by[t.date]=(by[t.date]||0)+t.pnl;});const ds=Object.keys(by).sort().reverse();let s=0;for(const d of ds){if(by[d]>0)s++;else break;}return s;}
+function streakDays(){const by={};DB.get('trades').forEach(t=>{if(t.res!=='Skip')by[t.date]=(by[t.date]||0)+effPnl(t);});
+  const ds=Object.keys(by).sort().reverse();let s=0;for(const d of ds){if(by[d]>0)s++;else break;}return s;}
 function renderTrades(){
   const a=DB.get('trades').sort((x,y)=>y.date.localeCompare(x.date)||y.id-x.id);
-  const evalPnl=a.filter(t=>t.strat==='ORB-Fade').reduce((s,t)=>s+t.pnl,0);
+  const evalPnl=a.filter(t=>t.strat==='ORB-Fade').reduce((s,t)=>s+effPnl(t),0);
   const decided=a.filter(t=>t.res==='W'||t.res==='L');const wins=decided.filter(t=>t.res==='W').length;
   const pct=Math.max(0,Math.min(1,evalPnl/1250));
   $('#ringProg').style.strokeDashoffset=RING_C*(1-pct);
@@ -224,13 +239,13 @@ function renderTrades(){
   $('#winRate').textContent=decided.length?Math.round(wins/decided.length*100)+'%':'–';
   $('#tradeCnt').textContent=decided.length;$('#toGo').textContent=evalPnl>=1250?'✓ pass':money(1250-evalPnl);
   const sk=streakDays();$('#streak').textContent=sk>=2?('🔥 '+sk+' green days'):'';
-  $('#tradeList').innerHTML=a.length?a.map(t=>{const g=t.pnl>=0,skip=t.res==='Skip';const tag=t.res==='W'?'tag w':t.res==='L'?'tag l':'tag';
-    return `<div class="item"><div><div class="l">${t.strat} <span class="${tag}">${t.res}</span></div><div class="s">${t.date}${t.note?' · '+t.note.slice(0,38):''}</div></div><div style="text-align:right"><div class="pnl ${skip?'':(g?'g':'r')}">${skip?'—':(g?'+':'−')+'$'+Math.abs(t.pnl).toFixed(0)}</div><button class="del" onclick="delTrade(${t.id})">delete</button></div></div>`;}).join(''):'<div class="empty">No trades yet</div>';
+  $('#tradeList').innerHTML=a.length?a.map(t=>{const p=effPnl(t),g=p>=0,skip=t.res==='Skip';const tag=t.res==='W'?'tag w':t.res==='L'?'tag l':'tag';
+    return `<div class="item"><div><div class="l">${t.strat} <span class="${tag}">${t.res}</span></div><div class="s">${t.date}${t.note?' · '+t.note.slice(0,38):''}</div></div><div style="text-align:right"><div class="pnl ${skip?'':(g?'g':'r')}">${skip?'—':(g?'+':'−')+'$'+Math.abs(p).toFixed(0)}</div><button class="del" onclick="delTrade(${t.id})">delete</button></div></div>`;}).join(''):'<div class="empty">No trades yet</div>';
   renderCal();
 }
 function calShift(d){calMonth.setMonth(calMonth.getMonth()+d);renderCal();}
 function renderCal(){
-  const by={};DB.get('trades').forEach(t=>{by[t.date]=(by[t.date]||0)+t.pnl;});
+  const by={};DB.get('trades').forEach(t=>{by[t.date]=(by[t.date]||0)+effPnl(t);});
   const y=calMonth.getFullYear(),m=calMonth.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
   let h=['S','M','T','W','T','F','S'].map(d=>`<div class="cal-h">${d}</div>`).join('');
   for(let i=0;i<first;i++)h+='<div></div>';
@@ -240,57 +255,66 @@ function renderCal(){
   $('#calGrid').innerHTML=h;$('#calMonth').textContent=calMonth.toLocaleString('en-US',{month:'long',year:'numeric'});
 }
 
-// gym
+// ---------- gym ----------
 function lastFor(ex){const w=DB.get('workouts').filter(x=>x.sets[ex]).sort((a,b)=>b.id-a.id)[0];return w?w.sets[ex]:null;}
-function renderEx(){const day=segVal('daySeg');$('#gDate').value=$('#gDate').value||today();
-  $('#exList').innerHTML=EXERCISES[day].map((ex,i)=>{const l=lastFor(ex);
-    return `<div class="ex"><div class="n"><span>${ex}</span><span class="last ${l?'':'none'}">${l?`last ${l.w}×${l.r}`:'—'}</span></div><div class="row"><input type="number" inputmode="decimal" id="w${i}" placeholder="${l?l.w+' lb':'lb'}"><input type="number" inputmode="numeric" id="r${i}" placeholder="${l?l.r+' reps':'reps'}"></div></div>`;}).join('');}
-function saveWorkout(){const day=segVal('daySeg');const sets={};let any=false;
-  EXERCISES[day].forEach((ex,i)=>{const w=$('#w'+i).value,r=$('#r'+i).value;if(w&&r){sets[ex]={w:+w,r:+r};any=true;}});
-  if(!any){alert('Log at least one exercise');return;}const a=DB.get('workouts');a.push({id:Date.now(),date:$('#gDate').value||today(),day,sets});DB.set('workouts',a);renderEx();renderWO();}
+function bestFor(ex){const ws=DB.get('workouts').filter(x=>x.sets[ex]);return ws.length?Math.max(...ws.map(x=>x.sets[ex].w)):null;}
+function renderEx(){const day=segVal('daySeg');$('#gDate').value=$('#gDate').value||today();const preset=EXERCISES[day];
+  $('#exList').innerHTML=exFor(day).map((ex,i)=>{const l=lastFor(ex),b=bestFor(ex),isC=!preset.includes(ex);
+    return `<div class="ex"><div class="n"><span>${ex}${isC?` <button class="xrm" onclick="removeExercise('${ex.replace(/'/g,"\\'")}')">✕</button>`:''}</span>
+    <span class="meta"><span class="last ${l?'':'none'}">${l?`last ${l.w}×${l.r}`:'—'}</span>${b?`<span class="best">🏆${b}</span>`:''}</span></div>
+    <div class="row"><input type="number" inputmode="decimal" id="w${i}" placeholder="${l?l.w+' lb':'lb'}"><input type="number" inputmode="numeric" id="r${i}" placeholder="${l?l.r+' reps':'reps'}"></div></div>`;}).join('');}
+function addExercise(){const day=segVal('daySeg');const n=prompt('New exercise name:');if(!n||!n.trim())return;const c=customEx();c[day]=c[day]||[];c[day].push(n.trim());localStorage.setItem('customExercises',JSON.stringify(c));renderEx();}
+function removeExercise(name){const day=segVal('daySeg');const c=customEx();c[day]=(c[day]||[]).filter(x=>x!==name);localStorage.setItem('customExercises',JSON.stringify(c));renderEx();}
+function saveWorkout(){const day=segVal('daySeg');const exs=exFor(day);const sets={};let any=false;const prs=[];
+  exs.forEach((ex,i)=>{const w=$('#w'+i).value,r=$('#r'+i).value;if(w&&r){const pb=bestFor(ex);if(pb===null||+w>pb)prs.push(`${ex.split(' ')[0]} ${w}lb`);sets[ex]={w:+w,r:+r};any=true;}});
+  if(!any){alert('Log at least one exercise');return;}
+  const a=DB.get('workouts');a.push({id:Date.now(),date:$('#gDate').value||today(),day,sets});DB.set('workouts',a);renderEx();renderWO();
+  if(prs.length)setTimeout(()=>alert('🏆 New PR'+(prs.length>1?'s':'')+'!\n'+prs.join('\n')),60);}
 function delWO(id){DB.set('workouts',DB.get('workouts').filter(x=>x.id!==id));renderWO();renderEx();}
 function renderWO(){const a=DB.get('workouts').sort((x,y)=>y.id-x.id);
-  $('#woList').innerHTML=a.length?a.map(w=>{const ex=Object.entries(w.sets).map(([k,v])=>`${k.split(' ')[0]} ${v.w}×${v.r}`).join(' · ');
-    return `<div class="item"><div><div class="l">${w.day} <span class="tag">${Object.keys(w.sets).length} lifts</span></div><div class="s">${w.date} · ${ex.slice(0,50)}${ex.length>50?'…':''}</div></div><button class="del" onclick="delWO(${w.id})">del</button></div>`;}).join(''):'<div class="empty">No workouts yet</div>';}
+  $('#woList').innerHTML=a.length?a.map(w=>{const vol=Object.values(w.sets).reduce((s,v)=>s+v.w*v.r,0);const ex=Object.entries(w.sets).map(([k,v])=>`${k.split(' ')[0]} ${v.w}×${v.r}`).join(' · ');
+    return `<div class="item"><div><div class="l">${w.day} <span class="tag">${(vol/1000).toFixed(1)}k vol</span></div><div class="s">${w.date} · ${ex.slice(0,46)}${ex.length>46?'…':''}</div></div><button class="del" onclick="delWO(${w.id})">del</button></div>`;}).join(''):'<div class="empty">No workouts yet</div>';}
 
-// food
+// ---------- food ----------
 function toggleCrea(){const a=DB.get('creatine');const t=today();const i=a.indexOf(t);if(i>=0)a.splice(i,1);else a.push(t);DB.set('creatine',a);renderFood();}
-function creaStreak(){const set=new Set(DB.get('creatine'));let s=0;const d=new Date();for(;;){const ds=d.toISOString().slice(0,10);if(set.has(ds)){s++;d.setDate(d.getDate()-1);}else break;}return s;}
+function creaStreak(){const set=new Set(DB.get('creatine'));let s=0;const d=new Date();for(;;){const ds=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;if(set.has(ds)){s++;d.setDate(d.getDate()-1);}else break;}return s;}
 function addFood(n,c,p){const a=DB.get('foods');a.push({id:Date.now(),date:today(),name:n,cal:+c,protein:+p});DB.set('foods',a);renderFood();}
 function addCustom(){const n=$('#fName').value.trim()||'food';const c=+$('#fCal').value||0;const p=+$('#fPro').value||0;if(!c&&!p){alert('Enter calories or protein');return;}addFood(n,c,p);$('#fName').value='';$('#fCal').value='';$('#fPro').value='';}
 function delFood(id){DB.set('foods',DB.get('foods').filter(x=>x.id!==id));renderFood();}
 function renderFood(){
   const g=goals(),t=today(),foods=DB.get('foods');
   const tf=foods.filter(f=>f.date===t);const cal=tf.reduce((s,f)=>s+f.cal,0),pro=tf.reduce((s,f)=>s+f.protein,0);
-  // creatine
   const took=DB.get('creatine').includes(t);const cs=creaStreak();
   $('#creaBtn').textContent=took?'✓ Taken':'Tap to log';$('#creaBtn').classList.toggle('on',took);
   $('#creaStreak').textContent=cs>=1?('🔥 '+cs+' day streak'):'no streak yet';
-  // macros
   $('#calNow').textContent=cal.toLocaleString()+' cal';$('#calGoalT').textContent='/ '+g.cal.toLocaleString()+' ✎';
   $('#proNow').textContent=pro+'g protein';$('#proGoalT').textContent='/ '+g.pro+'g ✎';
   $('#calBar').style.width=Math.min(100,cal/g.cal*100)+'%';$('#proBar').style.width=Math.min(100,pro/g.pro*100)+'%';
-  $('#calNow').style.color=cal>=g.cal?'var(--accent)':'';
-  $('#foodDate').textContent=cal>=g.cal?'surplus hit ✓':'';
-  // quick add
+  $('#calNow').style.color=cal>=g.cal?'var(--accent)':'';$('#foodDate').textContent=cal>=g.cal?'surplus hit ✓':'';
   $('#qaList').innerHTML=STAPLES.map(s=>`<button onclick="addFood('${s[0]}',${s[1]},${s[2]})">${s[0]} <b>${s[1]}</b></button>`).join('');
-  // today log
   $('#foodList').innerHTML=tf.length?tf.slice().reverse().map(f=>`<div class="item"><div><div class="l">${f.name}</div><div class="s">${f.cal} cal · ${f.protein}g protein</div></div><button class="del" onclick="delFood(${f.id})">del</button></div>`).join(''):'<div class="empty">Nothing logged today</div>';
-  // past days
-  const byd={};foods.filter(f=>f.date!==t).forEach(f=>{byd[f.date]=byd[f.date]||{c:0,p:0};byd[f.date].c+=f.cal;byd[f.date].p+=f.protein;});
-  const ds=Object.keys(byd).sort().reverse().slice(0,7);
-  $('#foodHist').innerHTML=ds.length?ds.map(d=>`<div class="item"><div class="l">${d}</div><div class="s" style="margin:0">${byd[d].c.toLocaleString()} cal · ${byd[d].p}g</div></div>`).join(''):'<div class="empty">No earlier days yet</div>';
+  renderFoodCal();
+}
+function foodCalShift(d){foodCalMonth.setMonth(foodCalMonth.getMonth()+d);renderFoodCal();}
+function renderFoodCal(){
+  const g=goals(),byd={};DB.get('foods').forEach(f=>{byd[f.date]=(byd[f.date]||0)+f.cal;});
+  const crea=new Set(DB.get('creatine'));
+  const y=foodCalMonth.getFullYear(),m=foodCalMonth.getMonth(),first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
+  let h=['S','M','T','W','T','F','S'].map(d=>`<div class="cal-h">${d}</div>`).join('');
+  for(let i=0;i<first;i++)h+='<div></div>';
+  for(let d=1;d<=days;d++){const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const c=byd[ds];
+    const cls=c===undefined?'':(c>=g.cal?'pos':'part');
+    h+=`<div class="cal-d ${cls}">${crea.has(ds)?'<span class="cdot"></span>':''}<span class="cd">${d}</span>${c?`<span class="cp">${kfmt(c)}</span>`:''}</div>`;}
+  $('#foodCalGrid').innerHTML=h;$('#foodCalMonth').textContent=foodCalMonth.toLocaleString('en-US',{month:'long',year:'numeric'});
 }
 
-// body
+// ---------- body ----------
 function addWeight(){const v=parseFloat($('#wVal').value);if(!v){alert('Enter weight');return;}const a=DB.get('weights');a.push({id:Date.now(),date:$('#wDate').value||today(),lbs:v});DB.set('weights',a);$('#wVal').value='';renderBody();}
 function delW(id){DB.set('weights',DB.get('weights').filter(x=>x.id!==id));renderBody();}
 function sparkline(vals,goal){
   if(vals.length<2)return '<div class="empty" style="padding:14px">Add 2+ entries to see your trend</div>';
-  const w=300,h=90,pad=10;let mn=Math.min(...vals),mx=Math.max(...vals);
-  if(goal){mn=Math.min(mn,goal);mx=Math.max(mx,goal);}const rng=(mx-mn)||1;
-  const Y=v=>h-pad-(v-mn)/rng*(h-2*pad);
-  const pts=vals.map((v,i)=>[pad+i*(w-2*pad)/(vals.length-1),Y(v)]);
+  const w=300,h=90,pad=10;let mn=Math.min(...vals),mx=Math.max(...vals);if(goal){mn=Math.min(mn,goal);mx=Math.max(mx,goal);}const rng=(mx-mn)||1;
+  const Y=v=>h-pad-(v-mn)/rng*(h-2*pad);const pts=vals.map((v,i)=>[pad+i*(w-2*pad)/(vals.length-1),Y(v)]);
   const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
   const area=line+` L ${pts[pts.length-1][0].toFixed(1)} ${h} L ${pts[0][0].toFixed(1)} ${h} Z`;const last=pts[pts.length-1];
   const gl=goal?`<line x1="0" y1="${Y(goal).toFixed(1)}" x2="${w}" y2="${Y(goal).toFixed(1)}" stroke="#6aa9ff" stroke-width="1.5" stroke-dasharray="5 5" opacity=".8"/>`:'';
@@ -302,17 +326,15 @@ function renderBody(){
     $('#wNow').textContent=now+' lb';$('#wChg').textContent=(chg>=0?'+':'')+chg.toFixed(1);$('#wChg').style.color=chg>=0?'var(--accent)':'var(--red)';
     if(g.w){const gap=g.w-now;$('#wToGoal').textContent=Math.abs(gap)<0.1?'🎯 goal hit!':(gap>0?gap.toFixed(1)+' lb to go':'+'+Math.abs(gap).toFixed(1)+' over');}else $('#wToGoal').textContent='';
   }else{$('#wNow').textContent='–';$('#wChg').textContent='–';$('#wToGoal').textContent='';}
-  $('#wGoal').textContent=g.w?g.w+' lb':'set';
-  $('#wChart').innerHTML=sparkline(a.map(x=>x.lbs),g.w);
+  $('#wGoal').textContent=g.w?g.w+' lb':'set';$('#wChart').innerHTML=sparkline(a.map(x=>x.lbs),g.w);
   $('#wList').innerHTML=a.length?[...a].reverse().map(w=>`<div class="item"><div class="l">${w.lbs} lb</div><div style="text-align:right"><div class="s">${w.date}</div><button class="del" onclick="delW(${w.id})">del</button></div></div>`).join(''):'<div class="empty">No entries yet</div>';
 }
 
 function setGoal(k){const s=SET.get();const cur=goals();const names={cal:'daily calorie goal',pro:'daily protein goal (g)',w:'goal weight (lb)'};
   const v=prompt('Set '+names[k]+':',k==='cal'?cur.cal:k==='pro'?cur.pro:(cur.w||''));if(v===null)return;const n=parseFloat(v);if(!n){if(k==='w'){delete s.w;SET.set(s);renderBody();}return;}s[k]=n;SET.set(s);renderFood();renderBody();}
-
 function menu(){const c=prompt('export · import · clear');
-  if(c==='export'){prompt('Copy & save this backup:',JSON.stringify({trades:DB.get('trades'),workouts:DB.get('workouts'),weights:DB.get('weights'),foods:DB.get('foods'),creatine:DB.get('creatine'),settings:SET.get()}));}
-  else if(c==='import'){try{const o=JSON.parse(prompt('Paste backup:'));['trades','workouts','weights','foods','creatine'].forEach(k=>DB.set(k,o[k]||[]));if(o.settings)SET.set(o.settings);renderAll();alert('Imported ✅');}catch(e){alert('Bad data');}}
+  if(c==='export'){prompt('Copy & save this backup:',JSON.stringify({trades:DB.get('trades'),workouts:DB.get('workouts'),weights:DB.get('weights'),foods:DB.get('foods'),creatine:DB.get('creatine'),settings:SET.get(),customExercises:customEx()}));}
+  else if(c==='import'){try{const o=JSON.parse(prompt('Paste backup:'));['trades','workouts','weights','foods','creatine'].forEach(k=>DB.set(k,o[k]||[]));if(o.settings)SET.set(o.settings);if(o.customExercises)localStorage.setItem('customExercises',JSON.stringify(o.customExercises));renderAll();alert('Imported ✅');}catch(e){alert('Bad data');}}
   else if(c==='clear'){if(confirm('Wipe ALL data?')){localStorage.clear();renderAll();}}}
 
 function renderAll(){renderTrades();renderWO();renderBody();renderFood();}
